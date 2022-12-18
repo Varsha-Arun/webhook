@@ -212,6 +212,8 @@ pipelines:
             - git log
             - ls
             - cat pipelines.sh    
+            - set_run_name 'commit and tag create true'
+            - update_run_description 'this run will triggered automatically when we commit with branch name master and tag with v.*'
 
   - name: pipelines_false
   
@@ -230,7 +232,9 @@ pipelines:
             - pushd $res_gitresource_resourcePath
             - git log
             - ls
-            - cat pipelines.sh         
+            - cat pipelines.sh  
+            - set_run_name 'commit false'
+            - update_run_description 'this run will never be triggered automatically for master branch'
             
   - name: pipelines_Pullcreatetrue
     steps:
@@ -244,7 +248,9 @@ pipelines:
             - name: gitpullcreatetrue
         execution:              
           onExecute:
-            - printenv     
+            - printenv  
+            - set_run_name 'pr true for master branch'
+            - update_run_description 'this run will be triggered automatically when we get PR for master branch excluded readme file'
 
   - name: pipelines_pullclosetrue
     steps:
@@ -259,6 +265,8 @@ pipelines:
         execution:              
           onExecute:
             - printenv 
+            - set_run_name 'pr close true for master branch'
+            - update_run_description 'this run will be triggered automatically when we close PR for master branch excluded readme file'
 
   - name: pipelines_Pullcreatefalse
     steps:
@@ -273,6 +281,8 @@ pipelines:
         execution:              
           onExecute:
             - printenv     
+            - set_run_name 'pr false for master branch'
+            - update_run_description 'this run will never be triggered automatically when we get PR for master branch excluded readme file'
 
   - name: pipelines_pullclosefalse
     steps:
@@ -286,7 +296,9 @@ pipelines:
             - name: gitpullclosefalse
         execution:              
           onExecute:
-            - printenv        
+            - printenv    
+            - set_run_name 'pr close false for master branch'
+            - update_run_description 'this run will never be triggered automatically when we close PR for master branch excluded readme file'
 
   - name: pipelines_tagcreatefalse
     steps:
@@ -300,7 +312,9 @@ pipelines:
             - name: gittagcreatefalse
         execution:              
           onExecute:
-            - printenv     
+            - printenv  
+            - set_run_name 'tag create false for master branch'
+            - update_run_description 'this run will never be triggered automatically when we create tag for master branch'
 
   - name: pipelines_tagcreatetrue
     steps:
@@ -315,6 +329,8 @@ pipelines:
         execution:              
           onExecute:
             - printenv  
+            - set_run_name 'tag create true for master branch'
+            - update_run_description 'this run will  be triggered automatically when we create tag for master branch with v.*'
 
   - name: pipelines_releasecreatefalse
     steps:
@@ -328,7 +344,9 @@ pipelines:
             - name: gitreleasecreatefalse
         execution:              
           onExecute:
-            - printenv     
+            - printenv   
+            - set_run_name 'release create false for master branch'
+            - update_run_description 'this run will never be triggered automatically when we create release for master branch'
 
   - name: pipelines_releasecreatetrue
     steps:
@@ -342,7 +360,9 @@ pipelines:
             - name: gitreleasecreatetrue
         execution:              
           onExecute:
-            - printenv     
+            - printenv 
+            - set_run_name 'release create true for master branch'
+            - update_run_description 'this run will  be triggered automatically when we create release for master branch with v.*'
 
 
           
