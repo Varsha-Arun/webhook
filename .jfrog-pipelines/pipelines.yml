@@ -77,7 +77,7 @@ resources:
   - name: gitpullclosetrue
     type: GitRepo
     configuration:
-      gitProvider: s_git
+      gitProvider: varsha_github
       path: Varsha-Arun/dummy
       files:  # optional
 #         include: pipelines.sh
